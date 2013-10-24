@@ -1,0 +1,9 @@
+{{ object.name|title }}
+<br><br>
+<strong>{{ object.description }}</strong>
+
+{% if object.images.all %}
+  {% for image in object.images.all %}
+    <img src="{{ image.image.url }}" alt="{{ object.name }}">
+  {% endfor %}
+{% endif %}

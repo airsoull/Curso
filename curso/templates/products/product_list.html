@@ -1,0 +1,14 @@
+{% load i18n %}
+<a href="{% url 'product_create' %}">{% trans "Crear" %}</a> <br><br>
+
+{% if category %}
+  {{ category.name|upper }}
+  <br><br>
+{% endif %}
+{% for product in object_list %}
+  <a href="{{ product.get_absolute_url }}">{{ product.name|title }}</a><br>
+  <strong>- <a href="{{ product.category.get_absolute_url }}">{{ product.category.name }}</a></strong>
+  <br>
+  <a href="{% url 'product_update' product.pk %}">{% trans "Actualizar" %}</a>
+  <br><br>
+{% endfor %}
